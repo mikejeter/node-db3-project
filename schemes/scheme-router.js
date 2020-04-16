@@ -14,6 +14,16 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/', (req, res) => {
+  Schemes.find()
+  .then(steps => {
+    res.json(steps);
+  })
+  .catch(err => {
+    res.status(500).json({ message: 'Failed to get schemes' });
+  });
+});
+
 router.get('/:id', (req, res) => {
   const { id } = req.params;
 
