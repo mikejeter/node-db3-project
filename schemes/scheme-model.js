@@ -18,8 +18,15 @@ function findSteps(id) {
     return db('steps')
 }
 
+function add(schemeData) {
+    return db('schemes').insert(schemeData)
+}
+
+
+
 module.exports = {
     find,
     findById,
-    findSteps
+    findSteps,
+    add
 };
