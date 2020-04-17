@@ -16,19 +16,29 @@ function findById(id) {
 
 function findSteps(id) {
     return db('steps')
-    .where({id})
+    .where({id});
 }
 
 function add(schemeData) {
-    return db('schemes').insert(schemeData)
+    return db('schemes')
+    .insert(schemeData);
 }
 
 function addStep(stepData, id) {
-    return db('steps').insert(stepData, id)
+    return db('steps')
+    .insert(stepData, id);
 }
 
 function update(changes, id) {
-    return db('schemes').update(changes, id)
+    return db('schemes')
+    .where({id})
+    .update(changes);
+}
+
+function remove(id) {
+    return db('schemes')
+        .where({id})
+        .del();
 }
 
 
@@ -39,5 +49,6 @@ module.exports = {
     findSteps,
     add,
     addStep,
-    update
+    update,
+    remove
 };
